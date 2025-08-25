@@ -10,7 +10,7 @@ if(isset($_POST['btn_Name'])){
     $product= new Product($id,$name,$price,$offerPrice);
     $save = $product->save();
     if($save){
-        echo $saved;
+        echo $save;
         unset($_POST['id']);
         unset($_POST['name']);
         unset($_POST['price']);

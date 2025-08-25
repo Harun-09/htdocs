@@ -17,7 +17,7 @@ class Product{
 
     public function save(){
         $data ="$this->id,$this->name,$this->price,$this->offerPrice";
-        if(filesize("productdata.txt") > 0 ){
+        if(file_exists("productdata.txt") && filesize("productdata.txt") > 0 ){
             $data=PHP_EOL.$data;
         }
         file_put_contents("productdata.txt",$data,FILE_APPEND);
@@ -36,36 +36,37 @@ class Product{
          return $html;
     }
     public static function delete($_id){
-        $data = file("productdata.txt");
+        $data = file("productdata.txt",FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
         $product="";
         foreach($data as $key=>$value){
             list($id, $name, $price, $offerPrice)=explode(",",$value);
             if($id!=$_id){
-                $product.=$value;
+                $product.=$value . PHP_EOL;
             }
         }
-        file_put_contents("productdata.txt",$product);
+        file_put_contents("productdata.txt", trim($product));
         return true;
     }
 
     public function update(){
 
-        $data=file("productdata.txt");
+        $data=file("productdata.txt",FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
         $product="";
         foreach ($data as $key => $value){
             list($id, $name, $price, $offerPrice)= explode(",",$value);
             if($this->id==$id){
-                $product .= $this->id.",".$this->name.",".$this->price.",".$this->offerPrice;
+                $product .= $this->id.",".$this->name.",".$this->price.",".$this->offerPrice . PHP_EOL;
             }else{
-                $product .= $value;
+                $product .= $value . PHP_EOL;
             }
         }
-        file_put_contents("productdata.txt",$product);
+        file_put_contents("productdata.txt",trim($product));
         return true;
     }
 
     public static function search ($_id){
         $data=file("productdata.txt");
+        $product=null;
         foreach ($data as $key => $value) {
             list($id,$name,$price,$offerPrice) = explode(",",$value);
             if($id==$_id){
