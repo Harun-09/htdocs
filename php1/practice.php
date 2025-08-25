@@ -281,6 +281,113 @@ foreach ($colors as $color) {
     echo $color . "<br>";
 }
 
+$students = [
+    ["Hasan", 25, "Dhaka"],
+    ["Rashed", 22, "Khulna"],
+    ["Khaled", 24, "Chittagong"]
+];
+
+$students[0][1] = 26; // Hasan এর age 25 থেকে 26 করা
+
+$students[] = ["Arif", 23, "Barishal"];
+
+for ($i = 0; $i < count($students); $i++) {
+    echo $students[$i][0] . " - " . $students[$i][1] . " - " . $students[$i][2] . "<br>";
+}
+
+$fruits = ["Mango", "Banana", "Apple"];
+echo count($fruits); // 3
+
+echo "<br>";
+
+array_push($fruits, "Orange");
+print_r($fruits);
+/*
+Array
+(
+    [0] => Mango
+    [1] => Banana
+    [2] => Apple
+    [3] => Orange
+)
+*/
+
+echo "<br>";
+
+array_pop($fruits);
+print_r($fruits);
+/*
+Array
+(
+    [0] => Mango
+    [1] => Banana
+    [2] => Apple
+)
+*/
+
+echo "<br>";
+
+
+array_shift($fruits);
+print_r($fruits);
+/*
+Array
+(
+    [0] => Banana
+    [1] => Apple
+)
+*/
+echo "<br>";
+
+
+array_unshift($fruits, "Papaya");
+print_r($fruits);
+/*
+Array
+(
+    [0] => Papaya
+    [1] => Banana
+    [2] => Apple
+)
+*/
+echo "<br>";
+
+
+sort($fruits);
+print_r($fruits);
+/*
+Array
+(
+    [0] => Apple
+    [1] => Banana
+    [2] => Papaya
+)
+*/
+echo "<br>";
+
+
+$students = [
+    ["name" => "Hasan", "age" => 25, "city" => "Dhaka"],
+    ["name" => "Rashed", "age" => 22, "city" => "Khulna"],
+    ["name" => "Khaled", "age" => 24, "city" => "Chittagong"]
+];
+
+$students[]=["name"=>"Alif", "age"=>25, "city"=>"Barishal"];
+
+foreach($students as $student){
+    echo $student["name"] . "-" . $student["age"] . "-" . $student["city"] . "<br>";
+}
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
