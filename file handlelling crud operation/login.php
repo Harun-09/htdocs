@@ -31,7 +31,7 @@ if (isset($_POST["btn_login"])) {
 
 // ✅ Step 3: Logged-in user check
 if (isset($_SESSION["name"])) {
-    echo "<h2>Welcome, " . $_SESSION["name"] . "</h2>";
+   echo "<h2>Welcome, {$_SESSION['name']}</h2>";
     echo '<a href="login.php?logout=true">Logout</a>';
     exit();
 }
